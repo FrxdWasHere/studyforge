@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Geometric Balance exact colors overrode as standard theme variables */
+  --color-bg: #09090B;
+  --color-card: #18181B;
+  --color-border: #27272A;
+  --color-text: #FAFAFA;
+  --color-muted: #A1A1AA;
+  --color-accent: #F59E0B;
+  --color-accent-muted: #78350F;
+
+  /* Standard tailwind class overrides to guarantee perfect auto-theming */
+  --color-gray-50: #09090B;
+  --color-zinc-50: #FAFAFA;
+  --color-zinc-100: #18181B;
+  --color-zinc-200: #27272A;
+  --color-zinc-800: #18181B;
+  --color-zinc-850: #27272A;
+  --color-zinc-900: #18181B;
+  --color-zinc-950: #09090B;
+  --color-white: #FAFAFA;
+
+  /* Text color overrides */
+  --color-gray-950: #FAFAFA;
+  --color-gray-900: #FAFAFA;
+  --color-gray-800: #FAFAFA;
+  --color-gray-700: #E4E4E7;
+  --color-gray-600: #D4D4D8;
+  --color-gray-500: #A1A1AA;
+  --color-gray-400: #A1A1AA;
+  --color-zinc-50: #FAFAFA;
+  --color-zinc-200: #E4E4E7;
+  --color-zinc-300: #D4D4D8;
+  --color-zinc-400: #A1A1AA;
+
+  /* Border overrides */
+  --color-gray-100: #27272A;
+  --color-gray-150: #27272A;
+  --color-gray-200: #27272A;
+
+  /* Action color overrides (Turn emerald to amber for warm gold accent) */
+  --color-emerald-50: rgba(245, 158, 11, 0.08);
+  --color-emerald-100: rgba(245, 158, 11, 0.15);
+  --color-emerald-200: #78350F;
+  --color-emerald-300: #b45309;
+  --color-emerald-400: #f59e0b;
+  --color-emerald-500: #f59e0b;
+  --color-emerald-600: #d97706;
+  --color-emerald-700: #b45309;
+  --color-emerald-800: #78350F;
+  --color-emerald-900: #451a03;
+  --color-emerald-950: #09090b;
+
+  --color-teal-50: rgba(245, 158, 11, 0.08);
+  --color-teal-100: rgba(245, 158, 11, 0.15);
+  --color-teal-500: #f59e0b;
+  --color-teal-600: #d97706;
+  --color-teal-700: #b45309;
+
+  --font-sans: "Space Grotesk", 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: "JetBrains Mono", 'Courier New', monospace;
+}
+
+/* Base resets & custom variables */
+:root {
+  --bg: #09090B;
+  --card: #18181B;
+  --border: #27272A;
+  --text: #FAFAFA;
+  --muted: #A1A1AA;
+  --accent: #F59E0B;
+  --accent-muted: #78350F;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+/* Custom styled scrollbars to look geometric and dark */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Specific theme layout support helpers */
+.logo-icon {
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 4px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+/* Heatmap customization */
+.heatmap-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--border);
+  transition: all 0.2s;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.15);
+}
+
+.heatmap-cell.lvl-1 {
+  background: var(--accent-muted);
+}
+
+.heatmap-cell.lvl-2 {
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+.heatmap-cell.lvl-3 {
+  background: var(--accent);
+}
+
+/* Mastery dynamic progress ring */
+.mastery-ring {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Selection and custom styling */
+::selection {
+  background: var(--accent-muted);
+  color: var(--text);
+}
+
+/* Custom Text Glow Hover Effects & Absolute Text Color Safety */
+button, a, [role="button"], .cursor-pointer {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base text elements hover glow styles */
+button:hover,
+a:hover,
+.cursor-pointer:hover {
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.4), 0 0 15px rgba(245, 158, 11, 0.2);
+}
+
+/* Explicit orange text hover glow */
+.text-amber-500:hover,
+.text-emerald-500:hover,
+.text-emerald-400:hover,
+.text-orange-400:hover,
+.text-amber-400:hover,
+.group:hover .group-hover\:text-emerald-500,
+.group:hover .group-hover\:text-emerald-400,
+.group:hover .group-hover\:text-amber-500,
+.group:hover h3,
+.group:hover h4 {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.75), 0 0 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+/* Override any potential black/dark grey text colors to be either clear light-medium grey or warm orange */
+body, p, span, h1, h2, h3, h4, h5, h6, li, td, th, label, input, select, textarea, button {
+  /* Force fallback to a clean grey if not specified */
+  --text-color-fallback: #A1A1AA;
+}
+
+/* Ensure no element gets black/dark-grey text classes */
+.text-black, .text-zinc-950, .text-zinc-900, .text-zinc-850, .text-zinc-800,
+.text-gray-950, .text-gray-900, .text-gray-850, .text-gray-800, .text-neutral-900,
+.text-slate-900 {
+  color: #FAFAFA !important;
+}
+
+.text-zinc-700, .text-gray-700, .text-slate-700, .text-neutral-700 {
+  color: #D4D4D8 !important;
+}
+
+.text-zinc-600, .text-gray-600, .text-slate-600, .text-neutral-600,
+.text-zinc-500, .text-gray-500, .text-slate-500, .text-neutral-500 {
+  color: #A1A1AA !important;
+}
+

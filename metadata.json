@@ -1,0 +1,6 @@
+{
+  "name": "StudyForge",
+  "description": "A local-first AI-powered flashcard and active recall study engine with spaced repetition and automatic deck generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
